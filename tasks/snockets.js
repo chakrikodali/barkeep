@@ -49,12 +49,12 @@ module.exports = function(grunt) {
         // Use snockets to get the dependency chain files.
         var js = task.filesSrc;
         grunt.util.async.forEach(js, function (fn, callback) {
-            snock.getConcatenation(fn, {minify: false}, function (err, js) {
+            snock.getConcatenation(fn, {minify: options.minify}, function (err, js) {
                 if (err) {
                     grunt.fail.fatal(err);
                 }
-                var combinedFile = outputFilename(fn, options.concat);
-                var javascript  = headerFooter(js, options.concat);
+                var combinedFile = outputFilename(fn, options);
+                var javascript  = headerFooter(js, options);
                 
                 grunt.file.write(combinedFile, javascript);
 
