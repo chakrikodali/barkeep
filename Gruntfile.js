@@ -60,6 +60,16 @@ module.exports = function(grunt) {
             src: ['tasks/*.js'],
             endpoint: 'foo.bar'
         }
+    },
+    templates: {
+      first: {
+        src: ['test/fixtures/html/one.html', 'test/fixtures/html/two.html'],
+        dest: 'test/fixtures/html/templateJSON1.js'
+      },
+      second: {
+        src: ['test/fixtures/html/three.html', 'test/fixtures/html/one.html'],
+        dest: 'test/fixtures/html/templateJSON2.js'
+      }
     }
   });
   
