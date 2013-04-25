@@ -4,6 +4,12 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('templates', 'Constructs a json from list of html files and minifies the json', function() {
       	var outputJSON = {};
+
+        var options = this.options();
+        if (!options) {
+            grunt.warn('Requires an options object.');
+            return false;
+        }
       	
       	this.files.forEach(function(f) {
         	f.src.filter(function(filepath) {
@@ -15,11 +21,11 @@ module.exports = function(grunt) {
 		          	return true;
 		        }
 		    }).map(function(filepath) {
-		    	outputJSON[path.basename(filepath, '.html')] = grunt.file.read(filepath)
+		    	outputJSON[path.basename(filepath, '.html')] = grunt.file.read(filepath);
 		    });
 
 		    //write output json to destination file
-		    grunt.file.write(f.dest, JSON.stringify(outputJSON));
+		    grunt.file.write(f.dest, options.templatesName +'='+ JSON.stringify(outputJSON));
         });
 
 	});

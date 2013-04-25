@@ -64,11 +64,17 @@ module.exports = function(grunt) {
     templates: {
       first: {
         src: ['test/fixtures/html/one.html', 'test/fixtures/html/two.html'],
-        dest: 'test/fixtures/html/templateJSON1.js'
+        dest: 'test/fixtures/html/templateJSON1.js',
+        options: {
+          templatesName: 'window.TemplatesNamespace.first'
+        }
       },
       second: {
         src: ['test/fixtures/html/three.html', 'test/fixtures/html/one.html'],
-        dest: 'test/fixtures/html/templateJSON2.js'
+        dest: 'test/fixtures/html/templateJSON2.js',
+        options: {
+          templatesName: 'window.TemplatesNamespace.second'
+        }
       }
     }
   });
